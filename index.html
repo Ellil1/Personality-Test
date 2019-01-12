@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Wyrdwalkers: What's Your Legend?</title>
+	<script src="personalityTest.js"></script> 
+
+  </head>
+
+<link rel="stylesheet" type="text/css" href="interface.css" />	
+  <body onload="drawTriangle()">
+    <header>
+      <div class="inner" >
+        <h1>Wyrdwalkers: What's Your Legend?</h1>
+        <h2></h2>
+      </div>
+    </header>
+	<button id="mainButton" onclick="calculateScore2()">Point</button>
+
+<canvas id="myCanvas" width="300" height="300" 
+style="#c3c3c3;display:none">
+Your browser does not support the canvas element.
+</canvas>
+
+<div id= "questionsDiv" style="block">
+<! Questions will be named after the Secundary Primordial. For example, for Logos, 0 is being completely Dragon and 20 completely Logos >
+ 
+<p>Technology can solve all of humanity's problems</p>
+  <input type="radio" id="r1" name="logos1" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="logos1" value="1.25"> Disagree
+  <input type="radio" id="r3" name="logos1" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="logos1" value="3.75"> Agree
+  <input type="radio" id="r3" name="logos1" value="5" checked="checked"> Strongly Agree  
+
+ <p>It is possible, through intelligence, discipline and willpower, to entirely overcome one's own natural urges.</p>
+  <input type="radio" id="r1" name="logos2" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="logos2" value="1.25"> Disagree
+  <input type="radio" id="r3" name="logos2" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="logos2" value="3.75"> Agree
+  <input type="radio" id="r3" name="logos2" value="5" checked="checked"> Strongly Agree  
+
+ <p>I would rather read a good book than go to a club</p>
+  <input type="radio" id="r1" name="logos3" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="logos3" value="1.25"> Disagree
+  <input type="radio" id="r3" name="logos3" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="logos3" value="3.75"> Agree
+  <input type="radio" id="r3" name="logos3" value="5" checked="checked"> Strongly Agree  
+
+ <p>Worldly pleasures and possessions are a distraction from what is really important.</p>
+  <input type="radio" id="r1" name="logos4" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="logos4" value="1.25"> Disagree
+  <input type="radio" id="r3" name="logos4" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="logos4" value="3.75"> Agree
+  <input type="radio" id="r3" name="logos4" value="5" checked="checked"> Strongly Agree  
+
+  
+  
+ <p>The community is more important than the individual</p>
+  <input type="radio" id="r1" name="kosmos1" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="kosmos1" value="1.25"> Disagree
+  <input type="radio" id="r3" name="kosmos1" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="kosmos1" value="3.75"> Agree
+  <input type="radio" id="r3" name="kosmos1" value="5" checked="checked"> Strongly Agree  
+
+ <p>I consider myself to be well-organised</p>
+  <input type="radio" id="r1" name="kosmos2" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="kosmos2" value="1.25"> Disagree
+  <input type="radio" id="r3" name="kosmos2" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="kosmos2" value="3.75"> Agree
+  <input type="radio" id="r3" name="kosmos2" value="5" checked="checked"> Strongly Agree  
+
+ <p>I am practical, not creative</p>
+  <input type="radio" id="r1" name="kosmos3" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="kosmos3" value="1.25"> Disagree
+  <input type="radio" id="r3" name="kosmos3" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="kosmos3" value="3.75"> Agree
+  <input type="radio" id="r3" name="kosmos3" value="5" checked="checked"> Strongly Agree  
+
+ <p>Being rich, successful and respected is important to me</p>
+  <input type="radio" id="r1" name="kosmos4" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="kosmos4" value="1.25"> Disagree
+  <input type="radio" id="r3" name="kosmos4" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="kosmos4" value="3.75"> Agree
+  <input type="radio" id="r3" name="kosmos4" value="5" checked="checked"> Strongly Agree  
+
+  
+  
+ <p>I consider myself as living in the moment, not constantly planning ahead</p>
+  <input type="radio" id="r1" name="eros1" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="eros1" value="1.25"> Disagree
+  <input type="radio" id="r3" name="eros1" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="eros1" value="3.75"> Agree
+  <input type="radio" id="r3" name="eros1" value="5" checked="checked"> Strongly Agree  
+
+ <p>Money doesn't buy happiness</p>
+  <input type="radio" id="r1" name="eros2" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="eros2" value="1.25"> Disagree
+  <input type="radio" id="r3" name="eros2" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="eros2" value="3.75"> Agree
+  <input type="radio" id="r3" name="eros2" value="5" checked="checked"> Strongly Agree  
+
+ <p>I would rather my child be kind than smart</p>
+  <input type="radio" id="r1" name="eros3" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="eros3" value="1.25"> Disagree
+  <input type="radio" id="r3" name="eros3" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="eros3" value="3.75"> Agree
+  <input type="radio" id="r3" name="eros3" value="5" checked="checked"> Strongly Agree  
+
+ <p>I don't care what people think about me</p>
+  <input type="radio" id="r1" name="eros4" value="0"> Strongly Disagree
+  <input type="radio" id="r2" name="eros4" value="1.25"> Disagree
+  <input type="radio" id="r3" name="eros4" value="2.5" checked="checked"> Neither Disagree nor Disagree  
+  <input type="radio" id="r2" name="eros4" value="3.75"> Agree
+  <input type="radio" id="r3" name="eros4" value="5" checked="checked"> Strongly Agree  
+
+</div>
+
+	</body>
+</html>
