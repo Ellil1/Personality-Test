@@ -167,6 +167,7 @@ Inti= new secondOrigin("Inti","God of the Sun",Inca.name,Inca,[Flashy,Forceful,Q
 
 
 function godPlacer(){
+
 	for(e=0;e<secondOriginArray.length;e++){
 		totalScore = [0,0,0]
 		
@@ -207,17 +208,16 @@ function godPlacer(){
 	logosScore = secondOriginArray[e].totalValues[0]
 	kosmosScore = secondOriginArray[e].totalValues[1];
 	erosScore = secondOriginArray[e].totalValues[2];
-
+	
 	/*
 	logosScore = 10
-	kosmosScore = 0
-	erosScore = 0
+	kosmosScore = 10
+	erosScore = 20
 	*/
 
-//	addPoint()
-		
+
 		}
-	
+
 }
 
 
@@ -246,7 +246,6 @@ function addPoint(){
 
 	
 	//	calculateScore2()
-
 
 // calculateScore();
 /*
@@ -294,7 +293,6 @@ ctx.fillStyle = "black";
 ctx.fill()
 */
 
-
 for(i=0;i<100;i++){
 	var difference = [finalPoint[0]-150,finalPoint[1]-213]
 	//Difference is the final point coordinates minus the coordinates of the exact middle of the Triangle
@@ -313,13 +311,17 @@ middleDistance = [basePoint[0]-150,basePoint[1]-213]
 
 	// Difference is the distance between finalPoint and the center
 	//MiddleDistance is the distance between basePoint and the center 
-basicRatio = (basePoint[0]-150)/difference[0]
+basicRatio = (basePoint[1]-213)/(difference[1]+0.1)
 	//the lower the ratio the closest to the extreme the point is
-	
-	
+finalToBasic = [basePoint[0]-finalPoint[0],basePoint[1]-finalPoint[1]]	
+
+	//finalToBasic is the distance between the finalPoint and the basicPoint
 	// now we set uberFinalPoint based on the ratio: the smaller the ratio, the more basePoint is heavy
-	var uberFinalPoint = [(finalPoint[0]*(basicRatio-1)+basePoint[0])/basicRatio,(finalPoint[1]*(basicRatio-1)+basePoint[1])/basicRatio]
-	console.log(uberFinalPoint)
+//	var uberFinalPoint = [((finalPoint[0]*(basicRatio+5))+(basePoint[0]*(15-basicRatio)))/20,((finalPoint[1]*(basicRatio+5))+(basePoint[1]*(15-basicRatio)))/20]
+	var uberFinalPoint = [finalPoint[0]+(finalToBasic[0]/(basicRatio/2+0.5)),finalPoint[1]+(finalToBasic[1]/(basicRatio/2)+0.5)]
+	//the basicRatio can be used to set how the exagerration is made.
+
+//	alert(Math.round(finalPoint[0]) + "," + Math.round(finalPoint[1]) + "   " + Math.round(uberFinalPoint[0]) + "," + Math.round(uberFinalPoint[1]) + "  " + secondOriginArray[e].name)
 	
 var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
@@ -330,8 +332,8 @@ ctx.fillStyle = "black";
 ctx.fill()
 
 
-switchDivs("myCanvas")
-switchDivs("questionsDiv")
+
+
 }
 
 function calculateScore(){
@@ -371,6 +373,8 @@ for(var v = 0; v < rates.length; v++){
 
 calculateScore()
 addPoint()
+		switchDivs("myCanvas")
+	switchDivs("questionsDiv")	
 	}
 	
 	
