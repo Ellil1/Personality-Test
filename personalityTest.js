@@ -418,7 +418,7 @@ IF Two sides are the same and one is three levels of difference
 
 function personalityMatcher(){	
 
-while(logosScore > 0 && kosmosScore > 0 && erosScore > 0){logosScore -= 1;kosmosScore -=1;erosScore -=1}
+//while(logosScore > 0 && kosmosScore > 0 && erosScore > 0){logosScore -= 1;kosmosScore -=1;erosScore -=1}
 
 	matchArrayAdjectives = []
 
@@ -427,9 +427,9 @@ for(p=0;p<adjectiveArray.length;p++){
 	}
  matchArrayAdjectives.sort(function(a, b){return a[0] - b[0]}); 
 console.log(matchArrayAdjectives)
-
 addPoint()
-alert("-" + matchArrayAdjectives[0][1].name + "\n-" +  matchArrayAdjectives[1][1].name) 	
+alert("You are: \n-" + matchArrayAdjectives[0][1].name + "\n-" +  matchArrayAdjectives[1][1].name + "\n-" +  matchArrayAdjectives[2][1].name + "\n-" +  matchArrayAdjectives[3][1].name
++ "\n \nYou are not: \n-"  + matchArrayAdjectives[matchArrayAdjectives.length-1][1].name + "\n-" +  matchArrayAdjectives[matchArrayAdjectives.length-2][1].name) 	
 }
 
 
@@ -437,28 +437,92 @@ alert("-" + matchArrayAdjectives[0][1].name + "\n-" +  matchArrayAdjectives[1][1
 
 adjectiveArray = [
 
-traditionalist = new adjective("Very Traditionalist",[0,20,0]),
-traditionalist = new adjective("Conservative",[0,10,0]),
-traditionalist = new adjective("Balanced",[0,0,0]),
-traditionalist = new adjective("Introverted",[20,0,0]),
-traditionalist = new adjective("Calm",[10,0,0]),
-traditionalist = new adjective("Passionate",[0,0,20]),
-traditionalist = new adjective("Emotional",[0,0,10]),
-traditionalist = new adjective("Disorganised",[10,0,10]),
-traditionalist = new adjective("Impulsive",[0,10,10]),
-traditionalist = new adjective("Serious",[10,10,10]),
-traditionalist = new adjective("Chaotic",[20,0,20]),
-traditionalist = new adjective("Wild",[0,20,20]),
-traditionalist = new adjective("Spiritual",[20,20,0])
 
+// 2.5 Logos 
 
+//Balanced = new adjective("Balanced",[2.5,2.5,2.5]),
+//	Balanced = new adjective("Balanced",[7.5,2.5,2.5]),
+//	Balanced = new adjective("Balanced",[12.5,12.5,12.5]),
+//	Balanced = new adjective("Balanced",[17.5,17.5,17.5]),
+Enthusiastic = new adjective("Enthusiastic",[2.5,2.5,7.5]),
+//	Enthusiastic = new adjective("Enthusiastic",[7.5,7.5,12.5]),
+//	Enthusiastic = new adjective("Enthusiastic",[12.5,12.5,17.5]),
+Emotional = new adjective("Emotional",[2.5,2.5,12.5]),
+//	Emotional = new adjective("Emotional",[7.5,7.5,17.5]),
+Passionate = new adjective("Passionate",[2.5,2.5,17.5]),
+
+Stable = new adjective("Stable",[2.5,7.5,2.5]),
+//	Stable = new adjective("Stable",[7.5,12.5,7.5]),
+//	Stable = new adjective("Stable",[12.5,17.5,12.5]),
+Intuitive = new adjective("Intuitive",[2.5,7.5,7.5]),
+//	Intuitive = new adjective("Intuitive",[7.5,12.5,12.5]),
+//	Intuitive = new adjective("Intuitive",[12.5,17.5,17.5]),
+Friendly = new adjective("Friendly",[2.5,7.5,12.5]),
+//	Friendly = new adjective("Friendly",[7.5,12.5,17.5]),
+Empathetic = new adjective("Empathetic",[2.5,7.5,17.5]),
+
+Conservative = new adjective("Conservative",[2.5,12.5,2.5]),
+//	Conservative = new adjective("Conservative",[7.5,17.5,7.5]),
+DownToEarth = new adjective("Down-to-earth",[2.5,12.5,7.5]),
+//	DownToEarth = new adjective("Down-to-earth",[7.5,17.5,12.5]),
+Impulsive = new adjective("Impulsive",[2.5,12.5,12.5]),
+//	Impulsive = new adjective("Impulsive",[7.5,17.5,17.5]),
+Nurturing = new adjective("Nurturing",[2.5,12.5,17.5]),
+
+Traditionalist = new adjective("Very Traditionalist",[2.5,17.5,2.5]),
+Pragmatic = new adjective("Pragmatic",[2.5,17.5,7.5]),
+Protective = new adjective("Protective",[2.5,17.5,12.5]),
+Wild = new adjective("Wild",[2.5,17.5,17.5]),
+
+// 7.5 Logos 
+
+Patient = new adjective("Patient",[7.5,2.5,2.5]),
+//	Patient = new adjective("Patient",[12.5,7.5,7.5]),
+//	Patient = new adjective("Patient",[17.5,12.5,12.5]),
+Disorganised = new adjective("Disorganised",[7.5,2.5,7.5]),
+//	Disorganised = new adjective("Disorganised",[12.5,7.5,12.5]),
+//	Disorganised = new adjective("Disorganised",[17.5,12.5,17.5]),
+Spontaneous = new adjective("Spontaneous",[7.5,2.5,12.5]),
+//	Spontaneous = new adjective("Spontaneous",[12.5,7.5,17.5]),
+Instinctive = new adjective("Instinctive",[7.5,2.5,17.5]),
+
+Realistic = new adjective("Realistic",[7.5,7.5,2.5]),
+//	Realistic = new adjective("Realistic",[12.5,12.5,7.5]),
+//	Realistic = new adjective("Realistic",[17.5,17.5,12.5]),
+
+Practical = new adjective("Practical",[7.5,12.5,2.5]),
+//	Practical = new adjective("Practical",[12.5,17.5,7.5]),
+
+Sensible = new adjective("Sensible",[7.5,17.5,2.5]),
+
+// 12.5 Logos 
+
+Calm = new adjective("Calm",[12.5,2.5,2.5]),
+//	Calm = new adjective("Calm",[17.5,7.5,7.5]),
+Cynical = new adjective("Cynical",[12.5,2.5,7.5]),
+//	Cynical = new adjective("Cynical",[17.5,7.5,12.5]),
+Rebellious = new adjective("Rebellious",[12.5,2.5,12.5]),
+//	Rebellious = new adjective("Rebellious",[17.5,7.5,17.5]),
+Idealistic = new adjective("Idealistic",[12.5,2.5,17.5]),
+
+Studious = new adjective("Studious",[12.5,7.5,2.5]),
+//	Studious = new adjective("Studious",[17.5,12.5,7.5]),
+
+Devoted = new adjective("Devoted",[12.5,12.5,2.5]),
+//	Devoted = new adjective("Devoted",[17.5,17.5,7.5]),
+
+Formal = new adjective("Formal",[12.5,17.5,2.5]),
+
+// 17.5 Logos 
+
+Analytical = new adjective("Analytical",[17.5,2.5,2.5]),
+Inquisitive = new adjective("Inquisitive",[17.5,2.5,7.5]),
+Individualistic = new adjective("Individualistic",[17.5,2.5,12.5]),
+Chaotic = new adjective("Chaotic",[17.5,2.5,17.5]),
+
+Ambitious = new adjective("Ambitious",[17.5,7.5,2.5]),
+
+PurposeDriven = new adjective("Purpose-Driven",[17.5,12.5,2.5]),
+
+Spiritual = new adjective("Spiritual",[17.5,17.5,2.5])
 ]
-
-/*Kosmos , Kaos*/kosmosKaos1 = [["traditionalist", "down-to-earth", "practical"],["traditionalist", "down-to-earth", "practical"],["imaginative", "open-minded", "experimental"],["imaginative", "open-minded", "experimental"]],
-/*Kosmos , Kaos*/kosmosKaos2 = [["conscientious", "disciplined", "well organised"],["conscientious", "disciplined", "well organised"],["spontaneous", "disorganised"],["spontaneous", "disorganised"]]
-
-/* Logos , Dragon*/logosDragon1 = [["reserved", "formal", "serious", "quiet"],["reserved", "formal", "serious", "quiet"],["impulsive","spontaneous","passionate"],["impulsive","spontaneous","passionate"]]
-/* Logos , Dragon*/logosDragon2 = [["calm","reflective","collected"],["calm","reflective","collected"],["unfocused","easily distracted","wild"],["unfocused","easily distracted","wild"]]
-
-/* Eros , Ananke*/ erosAnanke1 = [["emotional", "responsive"],["emotional", "responsive"],["composed", "inflexible","controlled"],["composed", "inflexible","controlled"]]
-/* Eros , Ananke*/ erosAnanke2 = [["self-indulgent","fun-seeking","enjoying life"],["self-indulgent","fun-seeking","enjoying life"],["ethical", "principled", "dependable"],["ethical", "principled", "dependable"]]
