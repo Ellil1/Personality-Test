@@ -1,4 +1,5 @@
 var radios=["logos1","logqos2","logos3","logos4","kosmos1","kosmos2","kosmos3","kosmos4","eros1","eros2","eros3","eros4"]
+var displayArray = []
 
 var secondOrigin = function(name,description,originString,originVar,approaches,domains,roles,totalValues) {
   this.name = name;
@@ -14,6 +15,12 @@ var secondOrigin = function(name,description,originString,originVar,approaches,d
 var parameterCalculator = function(name,type,values) {
   this.name = name;
   this.type = type;
+  this.values = values;
+
+};
+
+var adjective = function(name,values) {
+  this.name = name;
   this.values = values;
 
 };
@@ -44,7 +51,7 @@ Death = new parameterCalculator("Death Deity","Domain",[0,10,10]),
 Fire = new parameterCalculator("Fire Deity","Domain",[5,5,10]),
 Earth = new parameterCalculator("Earth Deity","Domain",[0,15,20]),
 Justice = new parameterCalculator("Justice Deity","Domain",[15,20,0]),
-Moon = new parameterCalculator("Moon Deity","Domain",[15,5,10]),
+Moon = new parameterCalculator("Moon Deity","Domain",[0,15,15]),
 Sun = new parameterCalculator("Sun Deity","Domain",[15,15,10]),
 Knowledge = new parameterCalculator("Knowledge Deity","Domain",[20,0,0]),
 Darkness = new parameterCalculator("Darkness Deity","Domain",[5,10,15]),
@@ -80,7 +87,7 @@ Maori = new parameterCalculator("Maori","God",[4,8,16]),
 Japanese = new parameterCalculator("Japanese","God",[4,16,16]),
 Aztec = new parameterCalculator("Aztec","God",[4,12,12]),
 Indian = new parameterCalculator("Indian","God",[12,16,12]),
-Celtic = new parameterCalculator("Celtic","God",[4,8,12]),
+Celtic = new parameterCalculator("Celtic","God",[4,8,16]),
 Inca = new parameterCalculator("Inca","God",[8,12,8])
 
 ]
@@ -103,7 +110,7 @@ var secondOriginArray = [
  Sobek= new secondOrigin("Sobek","God of Water and Retribution",Egyptian.name,Egyptian,[Careful,Forceful,Sneaky],[Water],[FreeSpirit,Hunter],[]),
  Thoth= new secondOrigin("Thoth","God of Knowledge",Egyptian.name,Egyptian,[Clever,Sneaky,Quick],[Wisdom],[Thinker],[]),
  
- Brahma= new secondOrigin("Brahma","The Creator",Indian.name,Indian,[Clever,Careful,Sneaky],[Knowledge,Father],[Thinker],[]),
+ Brahma= new secondOrigin("Brahma","Creator God",Indian.name,Indian,[Clever,Careful,Sneaky],[Knowledge,Father],[Thinker],[]),
  Ganesha= new secondOrigin("Ganesha","God of good luck and Wisdom",Indian.name,Indian,[Clever,Forceful,Sneaky],[Travel,Wisdom],[Harmonizer,Protector],[]),
  Indra= new secondOrigin("Indra","God of war and weather",Indian.name,Indian,[Forceful,Clever,Flashy],[Sky,Leader],[King],[]),
  Sarasvati= new secondOrigin("Sarasvati","Goddess of artists",Indian.name,Indian,[Flashy,Careful,Sneaky],[Crafting],[FreeSpirit],[]),
@@ -164,8 +171,6 @@ Inti= new secondOrigin("Inti","God of the Sun",Inca.name,Inca,[Flashy,Forceful,Q
  Tezcatlipoca= new secondOrigin("Tezcatlipoca","God of Change, Night and Destruction, Cardinal God of the North",Aztec.name,Aztec,[Clever,Sneaky,Forceful],[Moon,Darkness],[King],[]),
 ]
 
-
-
 function godPlacer(){
 
 	for(e=0;e<secondOriginArray.length;e++){
@@ -214,13 +219,12 @@ function godPlacer(){
 	kosmosScore = 10
 	erosScore = 20
 	*/
-
-
+	displayArray.push(secondOriginArray[e].name + ": " + (Math.round((logosScore-10)*10)/10) + "," + (Math.round((kosmosScore-10)*10)/10) + "," + (Math.round((erosScore-10)*10)/10) + "\n")
+//	addPoint()
 		}
+//alert(displayArray)
 
 }
-
-
 
 function drawTriangle(){
 var ax=300;
@@ -244,7 +248,6 @@ ctx.fill();
 
 function addPoint(){
 
-	
 	//	calculateScore2()
 
 // calculateScore();
@@ -322,15 +325,17 @@ finalToBasic = [basePoint[0]-finalPoint[0],basePoint[1]-finalPoint[1]]
 	//the basicRatio can be used to set how the exagerration is made.
 
 //	alert(Math.round(finalPoint[0]) + "," + Math.round(finalPoint[1]) + "   " + Math.round(uberFinalPoint[0]) + "," + Math.round(uberFinalPoint[1]) + "  " + secondOriginArray[e].name)
-	
 var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-ctx.beginPath();
-ctx.arc(uberFinalPoint[0],uberFinalPoint[1],2,0,2*Math.PI);
-ctx.stroke();
-ctx.fillStyle = "black";
-ctx.fill()
+var ctz=c.getContext("2d");
+ctz.beginPath();
+//ctz.arc(uberFinalPoint[0],uberFinalPoint[1],4,0,2*Math.PI);
+ctz.arc(uberFinalPoint[0],uberFinalPoint[1],4,0,2*Math.PI);
 
+ctz.stroke();
+ctz.fillStyle = "black"
+//console.log(colorChoice2[crt])
+//console.log("rgb(" + [colorChoice1[b],colorChoice2[crt],255].join(',') + ')')
+ctz.fill()
 
 
 
@@ -342,11 +347,15 @@ function calculateScore(){
 
 for(p=0;p<secondOriginArray.length;p++){
 //	console.log(secondOriginArray[p])
-	matchArray.push([Math.abs(secondOriginArray[p].totalValues[0]-logosScore)+Math.abs(secondOriginArray[p].totalValues[1]-kosmosScore)+Math.abs(secondOriginArray[p].totalValues[2]-erosScore),secondOriginArray[p].name])
+	matchArray.push([Math.abs(secondOriginArray[p].totalValues[0]-logosScore)+Math.abs(secondOriginArray[p].totalValues[1]-kosmosScore)+Math.abs(secondOriginArray[p].totalValues[2]-erosScore),secondOriginArray[p]])
 	}
  matchArray.sort(function(a, b){return a[0] - b[0]}); 
 
-alert("The God you are closest to is " + matchArray[0][1] + "!") 
+addPoint()
+		switchDivs("myCanvas")
+	switchDivs("questionsDiv")
+alert("The God you are closest to is " + matchArray[0][1].name + ", " +  matchArray[0][1].originString + " " + matchArray[0][1].description + "\nWiki Link: \nhttp://wyrdwalkers.wikidot.com/" + matchArray[0][1].name) 	
+	personalityMatcher()
 }
 
 
@@ -373,8 +382,8 @@ for(var v = 0; v < rates.length; v++){
 
 calculateScore()
 addPoint()
-		switchDivs("myCanvas")
-	switchDivs("questionsDiv")	
+//		switchDivs("myCanvas")
+//	switchDivs("questionsDiv")	
 	}
 	
 	
@@ -386,3 +395,70 @@ function switchDivs(selectedDiv) {
     x.style.display = "none";
   }
 }
+
+
+//27 similar results, 37 unique ones
+//37 final results (removing middle): 6 basic, 6 more advanced versions, then 6 mixes of those, then 6 final advanced and 6 mixes on each sides
+/*How this will work: 
+1 all neutral (4 neutral)
+IF all numbers are the same
+---
+6 with neutral words except a mild version of the side (3 neutrals, one normal)
+IF Two sides are the same and one is one level of difference
+---
+6 with neutral words except a strong version of the side (2 neutals, two normal)
+IF Two sides are the same and one is two levels of difference
+6 with mixes (2 neutrals, one strong from each common side)
+IF There is one at 2.5, one at 7.5, one at 12.5
+---
+6 with very strong words (2 neutrals, two strong)
+IF Two sides are the same and one is three levels of difference
+12 with strong words and mixes (1 neutral, two strong, one strong of the relevant side)
+*/
+
+function personalityMatcher(){	
+
+while(logosScore > 0 && kosmosScore > 0 && erosScore > 0){logosScore -= 1;kosmosScore -=1;erosScore -=1}
+
+	matchArrayAdjectives = []
+
+for(p=0;p<adjectiveArray.length;p++){
+	matchArrayAdjectives.push([Math.abs(adjectiveArray[p].values[0]-logosScore)+Math.abs(adjectiveArray[p].values[1]-kosmosScore)+Math.abs(adjectiveArray[p].values[2]-erosScore),adjectiveArray[p]])
+	}
+ matchArrayAdjectives.sort(function(a, b){return a[0] - b[0]}); 
+console.log(matchArrayAdjectives)
+
+addPoint()
+alert("-" + matchArrayAdjectives[0][1].name + "\n-" +  matchArrayAdjectives[1][1].name) 	
+}
+
+
+
+
+adjectiveArray = [
+
+traditionalist = new adjective("Very Traditionalist",[0,20,0]),
+traditionalist = new adjective("Conservative",[0,10,0]),
+traditionalist = new adjective("Balanced",[0,0,0]),
+traditionalist = new adjective("Introverted",[20,0,0]),
+traditionalist = new adjective("Calm",[10,0,0]),
+traditionalist = new adjective("Passionate",[0,0,20]),
+traditionalist = new adjective("Emotional",[0,0,10]),
+traditionalist = new adjective("Disorganised",[10,0,10]),
+traditionalist = new adjective("Impulsive",[0,10,10]),
+traditionalist = new adjective("Serious",[10,10,10]),
+traditionalist = new adjective("Chaotic",[20,0,20]),
+traditionalist = new adjective("Wild",[0,20,20]),
+traditionalist = new adjective("Spiritual",[20,20,0])
+
+
+]
+
+/*Kosmos , Kaos*/kosmosKaos1 = [["traditionalist", "down-to-earth", "practical"],["traditionalist", "down-to-earth", "practical"],["imaginative", "open-minded", "experimental"],["imaginative", "open-minded", "experimental"]],
+/*Kosmos , Kaos*/kosmosKaos2 = [["conscientious", "disciplined", "well organised"],["conscientious", "disciplined", "well organised"],["spontaneous", "disorganised"],["spontaneous", "disorganised"]]
+
+/* Logos , Dragon*/logosDragon1 = [["reserved", "formal", "serious", "quiet"],["reserved", "formal", "serious", "quiet"],["impulsive","spontaneous","passionate"],["impulsive","spontaneous","passionate"]]
+/* Logos , Dragon*/logosDragon2 = [["calm","reflective","collected"],["calm","reflective","collected"],["unfocused","easily distracted","wild"],["unfocused","easily distracted","wild"]]
+
+/* Eros , Ananke*/ erosAnanke1 = [["emotional", "responsive"],["emotional", "responsive"],["composed", "inflexible","controlled"],["composed", "inflexible","controlled"]]
+/* Eros , Ananke*/ erosAnanke2 = [["self-indulgent","fun-seeking","enjoying life"],["self-indulgent","fun-seeking","enjoying life"],["ethical", "principled", "dependable"],["ethical", "principled", "dependable"]]
